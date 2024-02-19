@@ -89,9 +89,9 @@ function screenStart() {
   fill(161, 194, 151);
   rect(250, 150, 330, 100, 20);
   fill(255);
-  strokeWeight(2);
+  noStroke();
   textSize(30);
-  text("Letz Get Startet", 307, 210);
+  text("Lets Get Startet", 307, 210);
   planet();
   carrot();
 }
