@@ -1,7 +1,21 @@
+// I have tried to cite it as good as possible but it's a bit
+// hard to keep track of things when you add, delete and more around
+// things all the time.
+// So I'll site chatGPT up here also: https://chat.openai.com/auth/login
+
 //SETUP
 function setup() {
   createCanvas(800, 700);
   background(235, 181, 191);
+}
+
+//GIFS
+//I got help from chatGPT how to add gifs - it's some small bits of codes all around. Totally worth it. So cute.
+let gifSad, gifHappy;
+
+function preload() {
+  gifSad = loadImage("sadbunny.gif");
+  gifHappy = loadImage("happybunny.gif");
 }
 
 //VARIABLES, FUNCTIONS AND OTHER
@@ -201,8 +215,10 @@ function screenWin() {
   push();
   fill(255);
   textSize(30);
-  text("Click Anywhere to Play Again <3", 185, 310);
+  text("Click Anywhere to Play Again <3", 165, 250);
   pop();
+
+  image(gifHappy, 240, 270, 300, 300);
 }
 
 //SCREEN SETUP - LOSE SCREEN
@@ -219,10 +235,12 @@ function screenLose() {
 
   //Text
   push();
-  fill(0);
+  fill(255);
   textSize(30);
-  text("Click Anywhere to Try Again...", 200, 310);
+  text("Click Anywhere to Try Again...", 200, 250);
   pop();
+
+  image(gifSad, 220, 270, 350, 350);
 }
 
 //DRAW
@@ -233,7 +251,7 @@ function draw() {
     velocity += acceleration;
 
     spacecraft();
-    if (keyIsDown(38)) {
+    if (keyIsDown(40)) {
       velocity -= 0.6;
     } else {
       velocity += 0.5;
