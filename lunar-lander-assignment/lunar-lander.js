@@ -1,61 +1,27 @@
-//Setup
+//SETUP
 function setup() {
   createCanvas(800, 700);
   background(235, 181, 191);
 }
 
-//Global
+//VARIABLES, FUNCTIONS AND OTHER
 textFont("ITC Avant Garde Gothic Pro");
 
-//Game Variables
 let spacecraftX = 400;
-let spacecraftY = 100;
-let velocity = 0.5;
-const acceleration = 0.1;
+let spacecraftY = 50;
+let velocity = 4;
+const acceleration = 0.2;
 let state = "start";
-let gameIsRunning = true;
-
-//Key Variables
+let gameIsRunning = false;
 let buttonClicked = false;
 
-//Screens Setup
-function screenStart() {
-  push();
-  state = "start";
-  startButton();
-
-  //Planet
-  noStroke();
-  fill(161, 194, 151);
-  rect(0, 500, 800, 200);
-
-  //Carrot 1
-  //Green
-  fill(73, 112, 61);
-  triangle(54, 548, 71, 541, 71, 565);
-  //Orange
-  fill(224, 158, 117);
-  triangle(50, 560, 80, 548, 85, 600);
-
-  //Carrot 2
-  //Green
-  fill(73, 112, 61);
-  triangle(135, 550, 172, 563, 137, 600);
-  //Orange
-  fill(224, 158, 117);
-  triangle(120, 565, 176, 584, 110, 670);
-
-  //Carrot 3
-  //Green
-  fill(73, 112, 61);
-  triangle(640, 548, 671, 541, 665, 570);
-  //Orange
-  fill(224, 158, 117);
-  triangle(632, 560, 684, 548, 685, 635);
-  pop();
+//Help from chatGPT in the following 5 lines
+function keyPressed() {
+  if (state === "bunny lander" && !gameIsRunning) {
+    gameIsRunning = true;
+  }
 }
 
-//Pressing Buttons Functions
 //The following 11 codes i got help from chapGPT and Garrits button video: https://pixelkind.github.io/foundationsofprogramming/programming/11-03-exercise
 function mousePressed() {
   if (
@@ -65,66 +31,26 @@ function mousePressed() {
     mouseY > 150 &&
     mouseY < 250
   ) {
-    buttonClicked = true;
     state = "bunny lander";
     background(235, 181, 191);
+  } else if (state === "results") {
+    state = "bunny lander";
+    background(235, 181, 191);
+    spacecraftX = 400;
+    spacecraftY = 50;
+    velocity = 5;
+    screenGame();
+    gameIsRunning = false;
   }
 }
 
-function screenGame() {
-  state = "bunny lander";
-  push();
-  //Planet
-  noStroke();
-  fill(161, 194, 151);
-  rect(0, 500, 800, 200);
-
-  //Carrot 1
-  //Green
-  fill(73, 112, 61);
-  triangle(54, 548, 71, 541, 71, 565);
-  //Orange
-  fill(224, 158, 117);
-  triangle(50, 560, 80, 548, 85, 600);
-
-  //Carrot 2
-  //Green
-  fill(73, 112, 61);
-  triangle(135, 550, 172, 563, 137, 600);
-  //Orange
-  fill(224, 158, 117);
-  triangle(120, 565, 176, 584, 110, 670);
-
-  //Carrot 3
-  //Green
-  fill(73, 112, 61);
-  triangle(640, 548, 671, 541, 665, 570);
-  //Orange
-  fill(224, 158, 117);
-  triangle(632, 560, 684, 548, 685, 635);
-
-  spacecraft();
-  pop();
-}
-
-function screenResult() {}
-
-//Other Draw Functions
-function startButton() {
-  stroke("white");
-  strokeWeight(5);
-  fill(161, 194, 151);
-  rect(250, 150, 330, 100, 20);
-  fill(255);
-  noStroke();
-  textSize(30);
-  text("Lets Get Startet", 307, 210);
-}
-
+//Spacecraft Function
 function spacecraft() {
   fill(255, 255, 255);
 
   //The following 25 lines i got help from chatGPT
+  push();
+  stroke("white");
   rect(spacecraftX, spacecraftY, 60, 80);
   triangle(
     spacecraftX,
@@ -157,50 +83,191 @@ function spacecraft() {
   );
   fill(161, 194, 151);
   rect(spacecraftX + 10, spacecraftY + 10, 40, 30, 10);
+  pop();
 }
 
-/////Draw/////
+//Start Button Function
+function startButton() {
+  push();
+  stroke("white");
+  strokeWeight(5);
+  fill(161, 194, 151);
+  rect(250, 150, 330, 100, 20);
+  fill(255);
+  noStroke();
+  textSize(30);
+  text("Let's Get Started", 307, 210);
+  pop();
+}
 
-function draw() {
+//SCREEN SETUP - STARTER SCREEN
+function screenStart() {
+  background(235, 181, 191);
+  state = "start";
+  startButton();
+  noStroke();
+
+  //Planet
+  push();
+  noStroke();
+  fill(161, 194, 151);
+  rect(0, 500, 800, 200);
+  pop();
+
+  //Carrot 1
+  //First two lines = green, Last two lines = orange.
+  push();
+  fill(73, 112, 61);
+  triangle(54, 548, 71, 541, 71, 565);
+  fill(224, 158, 117);
+  triangle(50, 560, 80, 548, 85, 600);
+  pop();
+
+  //Carrot 2
+  //First two lines = green, Last two lines = orange.
+  push();
+  fill(73, 112, 61);
+  triangle(135, 550, 172, 563, 137, 600);
+  fill(224, 158, 117);
+  triangle(120, 565, 176, 584, 110, 670);
+  pop();
+
+  //Carrot 3
+  //First two lines = green, Last two lines = orange.
+  push();
+  fill(73, 112, 61);
+  triangle(640, 548, 671, 541, 665, 570);
+  fill(224, 158, 117);
+  triangle(632, 560, 684, 548, 685, 635);
+  pop();
+}
+
+//SCREEN SETUP - GAME SCREEN
+function screenGame() {
+  state = "bunny lander";
   background(235, 181, 191);
 
-  //Keys
-  //Help from chatGPT in the following 18 lines
+  //Planet
+  push();
+  noStroke();
+  fill(161, 194, 151);
+  rect(0, 500, 800, 200);
+  pop();
+
+  //Carrot 1
+  //First two lines = green, Last two lines = orange.
+  push();
+  fill(73, 112, 61);
+  triangle(54, 548, 71, 541, 71, 565);
+  fill(224, 158, 117);
+  triangle(50, 560, 80, 548, 85, 600);
+  pop();
+
+  //Carrot 2
+  //First two lines = green, Last two lines = orange.
+  push();
+  fill(73, 112, 61);
+  triangle(135, 550, 172, 563, 137, 600);
+  fill(224, 158, 117);
+  triangle(120, 565, 176, 584, 110, 670);
+  pop();
+
+  //Carrot 3
+  //First two lines = green, Last two lines = orange.
+  push();
+  fill(73, 112, 61);
+  triangle(640, 548, 671, 541, 665, 570);
+  fill(224, 158, 117);
+  triangle(632, 560, 684, 548, 685, 635);
+  pop();
+
+  //Spacecraft
+  spacecraft();
+}
+
+//SCREEN SETUP - WINNER SCREEN
+function screenWin() {
+  state = "results";
+  background(73, 112, 61);
+
+  //Win Text
+  push();
+  fill(255);
+  textSize(30);
+  text("Little Bunny, You did it!", 225, 200);
+  pop();
+
+  //Text
+  push();
+  fill(255);
+  textSize(30);
+  text("Click Anywhere to Play Again <3", 185, 310);
+  pop();
+}
+
+//SCREEN SETUP - LOSE SCREEN
+function screenLose() {
+  state = "results";
+  background(224, 158, 117);
+
+  //Lose Text
+  push();
+  fill(255);
+  textSize(30);
+  text("To bad little Bunny, No carrots for you...", 125, 200);
+  pop();
+
+  //Text
+  push();
+  fill(0);
+  textSize(30);
+  text("Click Anywhere to Try Again...", 200, 310);
+  pop();
+}
+
+//DRAW
+function draw() {
+  //Help from chatGPT in the following 20 lines
   if (gameIsRunning) {
     spacecraftY += velocity;
     velocity += acceleration;
 
+    spacecraft();
     if (keyIsDown(38)) {
-      velocity -= 0.4;
+      velocity -= 0.6;
     } else {
-      velocity += 0.4;
+      velocity += 0.5;
     }
-    velocity = constrain(velocity, -4, 4);
+
+    if (keyIsDown(37)) {
+      spacecraftX = spacecraftX - 4;
+    } else if (keyIsDown(39)) {
+      spacecraftX = spacecraftX + 4;
+    }
+    if (keyIsDown(38)) {
+      spacecraftY = spacecraftY - 4;
+    }
   }
 
-  if (keyIsDown(37)) {
-    spacecraftX = spacecraftX - 3;
-  } else if (keyIsDown(39)) {
-    spacecraftX = spacecraftX + 3;
-  }
-  if (keyIsDown(38)) {
-    spacecraftY = spacecraftY - 3;
-  }
-
-  //Starter Screen
+  //DRAW STARTER SCREEN
   if (state === "start") {
     screenStart();
     startButton();
   }
 
-  //Game Screen
+  //DRAW GAME SCREEN
   else if (state === "bunny lander") {
-    spacecraft();
     screenGame();
+    spacecraft();
   }
 
-  //Result Screen
-  else if (state === "results") {
-    screenResult();
+  //DRAW RESULT SCREEN
+  if (spacecraftY >= 405) {
+    gameIsRunning = false;
+    if (velocity < 6) {
+      screenWin();
+    } else if (velocity > 6) {
+      screenLose();
+    }
   }
 }
