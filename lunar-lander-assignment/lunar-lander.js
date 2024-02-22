@@ -110,7 +110,7 @@ function startButton() {
   fill(255);
   noStroke();
   textSize(30);
-  text("Let's Get Started", 307, 210);
+  text("Let's Get Started", 297, 210);
   pop();
 }
 
