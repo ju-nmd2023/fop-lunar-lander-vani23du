@@ -9,6 +9,7 @@ let state = "start";
 //SETUP
 function setup() {
   createCanvas(800, 700);
+  frameRate(30);
   background(235, 181, 191);
   textFont("Arial");
 }
