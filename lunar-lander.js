@@ -13,6 +13,14 @@ function setup() {
   textFont("Arial");
 }
 
+//GIFS
+//Got some help from ChatGPT on how to use GIFS.
+let gifSad, gifHappy;
+
+function preload() {
+  gifSad = loadImage("sadbunny.gif");
+  gifHappy = loadImage("happybunny.gif");
+}
 let spacecraftX = 400;
 let spacecraftY = 50;
 let velocity = 4;
@@ -207,6 +215,8 @@ function screenWin() {
   textSize(30);
   text("Click Anywhere to Play Again <3", 165, 250);
   pop();
+
+  image(gifHappy, 220, 270, 350, 350);
 }
 
 //SCREEN SETUP - LOSE SCREEN
@@ -227,6 +237,8 @@ function screenLose() {
   textSize(30);
   text("Click Anywhere to Try Again...", 200, 250);
   pop();
+
+  image(gifSad, 220, 270, 350, 350);
 }
 
 //DRAW
