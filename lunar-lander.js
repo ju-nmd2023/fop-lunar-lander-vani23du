@@ -3,21 +3,20 @@
 // things all the time.
 // So I'll site chatGPT up here also: https://chat.openai.com/auth/login
 
+let gameIsRunning = false;
+let state = "start";
+
 //SETUP
 function setup() {
   createCanvas(800, 700);
   background(235, 181, 191);
+  textFont("Arial");
 }
-
-//VARIABLES, FUNCTIONS AND OTHER
-textFont("Arial");
 
 let spacecraftX = 400;
 let spacecraftY = 50;
 let velocity = 4;
 const acceleration = 0.2;
-let state = "start";
-let gameIsRunning = false;
 let buttonClicked = false;
 
 //Help from chatGPT in the following 5 lines
