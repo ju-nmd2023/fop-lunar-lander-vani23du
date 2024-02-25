@@ -10,7 +10,7 @@ function setup() {
 }
 
 //VARIABLES, FUNCTIONS AND OTHER
-textFont("ITC Avant Garde Gothic Pro");
+textFont("Arial");
 
 let spacecraftX = 400;
 let spacecraftY = 50;
@@ -101,7 +101,7 @@ function startButton() {
   fill(255);
   noStroke();
   textSize(30);
-  text("Let's Get Started", 297, 210);
+  text("Let's Get Started", 305, 210);
   pop();
 }
 
