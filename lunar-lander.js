@@ -9,15 +9,6 @@ function setup() {
   background(235, 181, 191);
 }
 
-//GIFS
-//I got help from chatGPT how to add gifs - it's some small bits of codes all around. Totally worth it. So cute.
-let gifSad, gifHappy;
-
-function preload() {
-  gifSad = loadImage("sadbunny.gif");
-  gifHappy = loadImage("happybunny.gif");
-}
-
 //VARIABLES, FUNCTIONS AND OTHER
 textFont("ITC Avant Garde Gothic Pro");
 
@@ -217,8 +208,6 @@ function screenWin() {
   textSize(30);
   text("Click Anywhere to Play Again <3", 165, 250);
   pop();
-
-  image(gifHappy, 240, 270, 300, 300);
 }
 
 //SCREEN SETUP - LOSE SCREEN
@@ -239,8 +228,6 @@ function screenLose() {
   textSize(30);
   text("Click Anywhere to Try Again...", 200, 250);
   pop();
-
-  image(gifSad, 220, 270, 350, 350);
 }
 
 //DRAW
