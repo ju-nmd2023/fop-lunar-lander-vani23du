@@ -3,6 +3,10 @@
 // things all the time.
 // So I'll site chatGPT up here also: https://chat.openai.com/auth/login
 
+//I saw you messege on Canvas about chatGPT and linking it correcly. Becuase of this assignment ->
+//being so "old" I don't have the conversation saved anymore and can't therefore link the ->
+//conversation correctly :(
+
 let gameIsRunning = false;
 let state = "start";
 
